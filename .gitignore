@@ -1,8 +1,12 @@
 .*.swp
 
 node_modules
+package-lock.json
 
 bundle.js
 local.json
 
 .idea
+
+static/files/qmk_firmware.zip
+qmk_firmware/*

@@ -14,10 +14,10 @@ class Files {
 	 */
 	static generate(keyboard) {
 		return {
-			'qmk_firmware/keyboards/kb/rules.mk': new RulesMKGenerator(keyboard).generate(),
-			'qmk_firmware/keyboards/kb/config.h': new ConfigHGenerator(keyboard).generate(),
-			'qmk_firmware/keyboards/kb/kb.h': new KbHGenerator(keyboard).generate(),
-			'qmk_firmware/keyboards/kb/keymaps/default/keymap.c': new KeymapCGenerator(keyboard).generate()
+			'keyboards/kb/rules.mk': new RulesMKGenerator(keyboard).generate(),
+			'keyboards/kb/config.h': new ConfigHGenerator(keyboard).generate(),
+			'keyboards/kb/kb.h': new KbHGenerator(keyboard).generate(),
+			'keyboards/kb/keymaps/default/keymap.c': new KeymapCGenerator(keyboard).generate()
 		};
 	}
 

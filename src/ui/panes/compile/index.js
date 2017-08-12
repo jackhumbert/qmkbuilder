@@ -73,7 +73,7 @@ class Compile extends React.Component {
 		const files = Files.generate(keyboard);
 
 		// Get the firmware stencil.
-		JSZipUtils.getBinaryContent('/files/firmware.zip', (err, data) => {
+		JSZipUtils.getBinaryContent('/files/qmk_firmware.zip', (err, data) => {
 			if (err) {
 				console.error(err);
 				state.error('Unable to retrieve files');
@@ -92,7 +92,7 @@ class Compile extends React.Component {
 					// Generate a friendly name.
 					const friendly = keyboard.settings.name ? Utils.generateFriendly(keyboard.settings.name) : 'layout';
 
-					saveAs(blob, friendly + '.zip');
+					saveAs(blob, 'qmk_firmware-' + friendly + '.zip');
 
 					// Re-enable buttons.
 					state.ui.set('compile-working', false);

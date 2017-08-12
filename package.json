@@ -6,6 +6,8 @@
 	"scripts": {
 		"build": "cross-env NODE_PATH=./src node index.js",
 		"deploy": "cross-env NODE_PATH=./src NODE_ENV=production node deploy.js",
+		"serve-front": "simplehttpserver static",
+		"serve-back": "node server/index.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -31,12 +33,15 @@
 		"crypto": "0.0.3",
 		"errorify": "^0.3.1",
 		"express": "^4.14.0",
+		"http-server": "^0.10.0",
 		"react": "^15.4.1",
 		"react-codemirror": "^0.3.0",
 		"react-dom": "^15.4.1",
+		"request": "^2.0.0",
 		"superagent": "^3.3.1",
 		"uglifyify": "^3.0.4",
-		"watchify": "^3.7.0"
+		"watchify": "^3.7.0",
+		"simplehttpserver": "^0.0.6"
 	},
 	"devDependencies": {
 		"cross-env": "^3.1.4"

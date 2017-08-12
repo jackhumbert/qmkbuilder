@@ -7,7 +7,7 @@ const b = browserify({
 		entries: [ './src/index.js' ],
 		cache: {},
 		packageCache: {},
-		plugin: [ watchify, errorify ]
+		plugin: [ errorify ]
 	})
 	.transform('babelify', {
 		presets: [ 'es2015', 'react' ]
