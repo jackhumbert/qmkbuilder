@@ -12,6 +12,7 @@ class State {
 
 		this.screen = C.SCREEN_MAIN; // The current screen.
 		this.keyboard = null; // The current keyboard layout.
+		this.presets = C.PRESETS;
 
 		// Bind methods.
 		this.update = this.update.bind(this);

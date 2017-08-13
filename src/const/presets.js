@@ -12,4 +12,4 @@ module.exports = {
 	'bantam-pcb': 'Bantam44 (PCB)',
 	'alps44': 'Alps44',
 	'miuni32-rgb-standard': 'Miuni32 RGB (Standard)'
-};
+};;

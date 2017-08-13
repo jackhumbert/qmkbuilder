@@ -16,6 +16,9 @@ class Main extends React.Component {
 		this.upload = this.upload.bind(this);
 		this.useKLE = this.useKLE.bind(this);
 		this.usePreset = this.usePreset.bind(this);
+		this.loadPresets = this.loadPresets.bind(this);
+
+		this.loadPresets();
 	}
 
 	/*
@@ -108,8 +111,35 @@ class Main extends React.Component {
 			});
 	}
 
+	loadPresets() {
+		const state = this.props.state;
+		
+		Request
+			.get("http://qmk.fm/keyboards.json")
+			.end((err, res) => {
+				if (err) return state.error('Unable to load presets: ' + err);
+
+				try {
+					const keyboards = JSON.parse(res.text);
+					const presets = state.presets;
+					for (var i = 0; i < keyboards.length; i++ ) {
+						presets[keyboards[i].shortname] = keyboards[i].name;
+					}
+					state.update({
+						presets: presets,
+						screen: C.SCREEN_MAIN
+					});
+					this.forceUpdate();
+				} catch (e) {
+					console.error(e);
+					state.error('Error retriving keyboards.json');
+				}
+			});
+	}
+
 	render() {
 		const state = this.props.state;
+		const presets = state.presets;
 
 		return <div>
 			<h3>Upload Keyboard Firmware Builder configuration</h3>
@@ -132,19 +162,21 @@ class Main extends React.Component {
 			</button>
 			<br/><br/>
 			<h3>Or choose a preset layout</h3>
+			<div id="presets">
 			{(() => {
-				const presets = [];
-				for (const preset in C.PRESETS) {
-					presets.push(<button
+				const presets_buttons = [];
+				for (const preset in presets) {
+					presets_buttons.push(<button
 						className='light block'
 						onClick={ () => this.usePreset(preset) }
 						key={ preset }>
-						{ C.PRESETS[preset] }
+						{ presets[preset] }
 					</button>);
-					presets.push(<div style={{ height: '0.5rem' }} key={ '-key-' + preset }/>);
+					presets_buttons.push(<div style={{ height: '0.5rem' }} key={ '-key-' + preset }/>);
 				}
-				return presets;
+				return presets_buttons;
 			})()}
+			</div>
 		</div>;
 	}
 

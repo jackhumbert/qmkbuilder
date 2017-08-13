@@ -7,8 +7,7 @@ const Crypto = require('crypto');
 const Exec = require('child_process').exec;
 const ExecSync = require('child_process').execSync;
 const Fs = require('fs');
-const request = require('request');
-const zlib = require('zlib');
+
 const co = require('co');
 
 // Create the express app.
