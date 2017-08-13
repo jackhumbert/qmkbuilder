@@ -71,7 +71,7 @@ app.post('/build', (req, res) => {
 		// Copy generated files.
 		for (const file in files) {
 			yield new Promise((resolve, reject) => {
-				const fileName = file.replace('keyboards', TMP + key + 'keyboards');
+				const fileName = file.replace('keyboards', TMP + key + '/keyboards');
 				Fs.writeFile(fileName, files[file], err => {
 					if (err) return reject('Failed to copy generated files: ' + err);
 					resolve();
